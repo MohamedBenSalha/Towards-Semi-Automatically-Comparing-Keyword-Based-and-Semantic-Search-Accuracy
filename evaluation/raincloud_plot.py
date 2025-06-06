@@ -1,7 +1,5 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-import seaborn as sns
-import numpy as np
 import ptitprince as pt
 
 file1 = 'retrieval_rag_1_10.csv'
@@ -25,7 +23,6 @@ plt.figure(figsize=(6, 4))
 values_file1_numpy = values_file1.to_numpy()
 values_file2_numpy = values_file2.to_numpy()
 
-
 # Create tidy dataframe
 df = pd.DataFrame({
     "value": list(values_file2_numpy) + list(values_file1_numpy),
@@ -36,11 +33,10 @@ df = pd.DataFrame({
 f, ax = plt.subplots()  # Increase figure size for better label display
 pt.RainCloud(x='group', y='value', data=df, bw=.2, width_viol=.6, ax=ax, orient='h')
 
-
 ax.set_xlabel("Information retrieval accuracy (equivalence classes)", fontsize=12)
 ax.set_ylabel("Search approach", fontsize=12)
-ax.tick_params(axis='both')  
-x_steps = range(1, max(values_file2)+1, 1)  # Steps of 1 from 0 to the max value
+ax.tick_params(axis='both')
+x_steps = range(1, max(values_file2) + 1, 1)  # Steps of 1 from 0 to the max value
 ax.set_xticks(x_steps)  # Set the ticks to these steps
 
 plt.tight_layout()
